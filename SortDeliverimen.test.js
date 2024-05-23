@@ -68,3 +68,13 @@ test("Lunchbox from Brasilia merchant", () => {
     expectedArray
   );
 });
+
+test("Lunchbox merchant", () => {
+  const sortedArray = new SortDeliverymen();
+  //15 20 20 30
+  const expectedArray = [John, Linus, Marie, Bob];
+
+  expect(sortedArray.handleSort(merchants[1], deliverymen)).toEqual(
+    expectedArray
+  );
+});
