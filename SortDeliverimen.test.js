@@ -57,3 +57,14 @@ const merchants = [
     locale: "São Paulo",
   },
 ];
+
+
+test("Lunchbox from Brasilia merchant", () => {
+  const sortedArray = new SortDeliverymen();
+  //10 7 6 2
+  const expectedArray = [Linus, Marie, John, Bob];
+
+  expect(sortedArray.handleSort(merchants[2], deliverymen)).toEqual(
+    expectedArray
+  );
+});
