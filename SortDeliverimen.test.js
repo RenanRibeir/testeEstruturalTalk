@@ -33,8 +33,6 @@ const Linus = {
   averageDeliveryCost: 30,
 };
 
-const deliverymen = [John, Bob, Marie, Linus];
-
 const merchants = [
   {
     id: 0,
@@ -72,7 +70,7 @@ test("Lunchbox from Brasilia merchant", () => {
 test("Lunchbox merchant", () => {
   const sortedArray = new SortDeliverymen();
   //15 20 20 30
-  const expectedArray = [John, Linus, Marie, Bob];
+  const expectedArray = [John, Marie, Linus, Bob];
 
   compareByNames(
     sortedArray.handleSort(merchants[1], [John, Bob, Marie, Linus]),
@@ -94,7 +92,7 @@ test("Jewelry merchant", () => {
 test("Drugstore merchant", () => {
   const sortDeliverymen = new SortDeliverymen();
   // 20 20 25 30
-  const expectedArray = [Marie, John, Bob, Linus];
+  const expectedArray = [John, Bob, Marie, Linus];
   const sortedArray = sortDeliverymen.handleSort(merchants[0], [
     John,
     Bob,
