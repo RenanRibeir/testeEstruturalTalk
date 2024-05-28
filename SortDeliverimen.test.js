@@ -58,13 +58,13 @@ const merchants = [
   },
 ];
 
-
 test("Lunchbox from Brasilia merchant", () => {
   const sortedArray = new SortDeliverymen();
   //10 7 6 2
   const expectedArray = [Linus, Marie, John, Bob];
 
-  expect(sortedArray.handleSort(merchants[2], deliverymen)).toEqual(
+  compareByNames(
+    sortedArray.handleSort(merchants[2], [John, Bob, Marie, Linus]),
     expectedArray
   );
 });
@@ -74,7 +74,8 @@ test("Lunchbox merchant", () => {
   //15 20 20 30
   const expectedArray = [John, Linus, Marie, Bob];
 
-  expect(sortedArray.handleSort(merchants[1], deliverymen)).toEqual(
+  compareByNames(
+    sortedArray.handleSort(merchants[1], [John, Bob, Marie, Linus]),
     expectedArray
   );
 });
@@ -84,17 +85,32 @@ test("Jewelry merchant", () => {
   //10 7 6 2
   const expectedArray = [Linus, Marie, John, Bob];
 
-  expect(sortedArray.handleSort(merchants[3], deliverymen)).toEqual(
+  compareByNames(
+    sortedArray.handleSort(merchants[3], [John, Bob, Marie, Linus]),
     expectedArray
   );
 });
 
 test("Drugstore merchant", () => {
-  const sortedArray = new SortDeliverymen();
+  const sortDeliverymen = new SortDeliverymen();
   // 20 20 25 30
   const expectedArray = [Marie, John, Bob, Linus];
+  const sortedArray = sortDeliverymen.handleSort(merchants[0], [
+    John,
+    Bob,
+    Marie,
+    Linus,
+  ]);
 
-  expect(sortedArray.handleSort(merchants[0], deliverymen)).toEqual(
-    expectedArray
-  );
+  compareByNames(sortedArray, expectedArray);
 });
+
+function compareByNames(sortedArray, expectedArray) {
+  const sortedNames = sortedArray.map((current) => current.name);
+  const expectedNames = expectedArray.map((current) => current.name);
+
+  console.log("expected: ", expectedNames);
+  console.log("sorted: ", sortedNames);
+
+  expect(sortedNames).toEqual(expectedNames);
+}
